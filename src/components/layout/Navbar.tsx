@@ -2,6 +2,13 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
+import Link from "@mui/material/Link";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
 import MagneticButton from "@/components/ui/MagneticButton";
 import { headerLinks } from "@/data/siteData";
 
@@ -36,15 +43,15 @@ export default function Navbar() {
   }, [menuOpen]);
 
   return (
-    <header
+    <Box
+      component="header"
       id="siteHeader"
       className={`${scrolled ? "scrolled" : ""} ${menuOpen ? "menu-open" : ""}`.trim()}
     >
-      <div className="wrap">
-        <nav>
-          {/* Logo */}
-          <a href="/" className="logo" aria-label="ADOPTBYTE - Home">
-            <span className="logo-frame">
+      <Box className="wrap">
+        <Box component="nav">
+          <Link href="/" className="logo" aria-label="ADOPTBYTE - Home" underline="none">
+            <Box className="logo-frame">
               <Image
                 src="/adopybyte_logo.png"
                 alt="Adoptbyte"
@@ -53,28 +60,24 @@ export default function Navbar() {
                 sizes="(max-width: 720px) 154px, 188px"
                 priority
               />
-            </span>
-          </a>
+            </Box>
+          </Link>
 
-          {/* Desktop nav links */}
-          <ul className="nav-links">
+          <List className="nav-links" disablePadding component="ul">
             {headerLinks.map((link) => (
-              <li key={link.href}>
-                <a href={link.href}>{link.label}</a>
-              </li>
+              <ListItem key={link.href} disablePadding component="li">
+                <Link href={link.href} underline="none">
+                  {link.label}
+                </Link>
+              </ListItem>
             ))}
-          </ul>
+          </List>
 
-          {/* Desktop CTA + mobile hamburger */}
-          <div className="nav-cta">
-            <MagneticButton
-              as="a"
-              href="#contact"
-              className="btn btn-primary desktop-cta"
-            >
+          <Box className="nav-cta">
+            <MagneticButton href="#contact" className="btn btn-primary desktop-cta">
               Book Free Consultation
             </MagneticButton>
-            <button
+            <IconButton
               className="menu-btn"
               id="menuBtn"
               aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -82,45 +85,70 @@ export default function Navbar() {
               aria-controls="mobileMenu"
               onClick={() => setMenuOpen((prev) => !prev)}
             >
-              <span />
-              <span />
-              <span />
-            </button>
-          </div>
-        </nav>
-      </div>
+              <MenuIcon />
+            </IconButton>
+          </Box>
+        </Box>
+      </Box>
 
-      <button
+      <Box
+        component="button"
+        type="button"
         className="menu-overlay"
         aria-label="Close menu"
         onClick={() => setMenuOpen(false)}
       />
 
-      <aside
+      <Box
+        component="aside"
         className="mobile-menu"
         id="mobileMenu"
         aria-hidden={!menuOpen}
         aria-label="Mobile navigation"
       >
-        <ul className="mobile-nav-links">
+        <Box className="mobile-menu-head">
+          <Link
+            href="/"
+            className="mobile-menu-logo"
+            aria-label="ADOPTBYTE - Home"
+            underline="none"
+            onClick={() => setMenuOpen(false)}
+          >
+            <Image
+              src="/adopybyte_logo.png"
+              alt="Adoptbyte"
+              fill
+              className="logo-image"
+              sizes="150px"
+            />
+          </Link>
+          <IconButton
+            className="mobile-menu-close"
+            aria-label="Close menu"
+            onClick={() => setMenuOpen(false)}
+          >
+            <CloseIcon />
+          </IconButton>
+        </Box>
+
+        <List className="mobile-nav-links" disablePadding component="ul">
           {headerLinks.map((link) => (
-            <li key={link.href}>
-              <a href={link.href} onClick={() => setMenuOpen(false)}>
+            <ListItem key={link.href} disablePadding component="li">
+              <Link href={link.href} underline="none" onClick={() => setMenuOpen(false)}>
                 {link.label}
-              </a>
-            </li>
+              </Link>
+            </ListItem>
           ))}
-        </ul>
+        </List>
 
         <MagneticButton
-          as="a"
           href="#contact"
           className="btn btn-primary mobile-menu-cta"
           onClick={() => setMenuOpen(false)}
         >
           Book Free Consultation
         </MagneticButton>
-      </aside>
-    </header>
+      </Box>
+    </Box>
   );
 }

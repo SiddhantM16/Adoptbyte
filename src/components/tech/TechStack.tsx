@@ -1,4 +1,6 @@
 import React from "react";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 import Reveal from "@/components/ui/Reveal";
 import { techStack } from "@/data/siteData";
 
@@ -10,29 +12,28 @@ export default function TechStack() {
   const trackItems = [...techStack, ...techStack];
 
   return (
-    <section style={{ paddingTop: "60px", paddingBottom: "60px" }}>
-      <div className="wrap">
-        <Reveal
-          className="section-head center"
-          style={{ marginBottom: "40px" }}
-        >
-          <span className="eyebrow">Our Toolkit</span>
-          <h2 style={{ fontSize: "28px" }}>
+    <Box component="section" sx={{ paddingTop: "60px", paddingBottom: "60px" }}>
+      <Box className="wrap">
+        <Reveal className="section-head center" style={{ marginBottom: "40px" }}>
+          <Typography component="span" className="eyebrow">
+            Our Toolkit
+          </Typography>
+          <Typography component="h2" sx={{ fontSize: "28px" }}>
             Technology we build with, every day.
-          </h2>
+          </Typography>
         </Reveal>
-      </div>
+      </Box>
 
-      <div className="tech-marquee" aria-label="Technology stack">
-        <div className="tech-track" role="list">
+      <Box className="tech-marquee" aria-label="Technology stack">
+        <Box className="tech-track" role="list">
           {trackItems.map((tech, idx) => (
-            <div key={`${tech}-${idx}`} className="chip" role="listitem">
-              <span className="dot" aria-hidden="true" />
+            <Box key={`${tech}-${idx}`} className="chip" role="listitem">
+              <Box component="span" className="dot" aria-hidden="true" />
               {tech}
-            </div>
+            </Box>
           ))}
-        </div>
-      </div>
-    </section>
+        </Box>
+      </Box>
+    </Box>
   );
 }

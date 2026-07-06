@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useInView, useMotionValue, useSpring } from "framer-motion";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 
 interface CounterProps {
   target: number;
@@ -27,9 +29,9 @@ export default function Counter({ target, suffix = "" }: CounterProps) {
   }, [spring]);
 
   return (
-    <div ref={divRef} className="num">
-      <span>{count}</span>
+    <Box ref={divRef} className="num">
+      <Typography component="span">{count}</Typography>
       {suffix}
-    </div>
+    </Box>
   );
 }

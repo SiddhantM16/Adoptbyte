@@ -1,4 +1,6 @@
 import React from "react";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 import Reveal from "@/components/ui/Reveal";
 import { projects } from "@/data/siteData";
 
@@ -8,22 +10,26 @@ import { projects } from "@/data/siteData";
  */
 export default function Portfolio() {
   return (
-    <section id="portfolio">
-      <div className="wrap">
+    <Box component="section" id="portfolio">
+      <Box className="wrap">
         <Reveal className="section-head">
-          <span className="eyebrow">Selected Work</span>
-          <h2>Products we&apos;ve shipped, and clients keep using.</h2>
+          <Typography component="span" className="eyebrow">
+            Selected Work
+          </Typography>
+          <Typography component="h2">
+            Products we&apos;ve shipped, and clients keep using.
+          </Typography>
         </Reveal>
 
-        <div className="portfolio-grid">
+        <Box className="portfolio-grid">
           {projects.map((p, idx) => (
             <Reveal
               key={p.n}
               className="project-card"
               style={{ transitionDelay: `${(idx % 2) * 0.08}s` }}
             >
-              <div className="laptop-mock">
-                <div className="laptop-screen">
+              <Box className="laptop-mock">
+                <Box className="laptop-screen">
                   <svg
                     viewBox="0 0 400 250"
                     width="100%"
@@ -56,21 +62,27 @@ export default function Portfolio() {
                       strokeLinejoin="round"
                     />
                   </svg>
-                </div>
-                <div className="laptop-base" aria-hidden="true" />
-              </div>
+                </Box>
+                <Box className="laptop-base" aria-hidden="true" />
+              </Box>
 
-              <div className="project-info">
-                <div>
-                  <h4>{p.n}</h4>
-                  <p>Full product design &amp; engineering</p>
-                </div>
-                <span className="tag">{p.tag}</span>
-              </div>
+              <Box className="project-info">
+                <Box>
+                  <Typography component="h4">
+                    {p.n}
+                  </Typography>
+                  <Typography component="p">
+                    Full product design &amp; engineering
+                  </Typography>
+                </Box>
+                <Typography component="span" className="tag">
+                  {p.tag}
+                </Typography>
+              </Box>
             </Reveal>
           ))}
-        </div>
-      </div>
-    </section>
+        </Box>
+      </Box>
+    </Box>
   );
 }

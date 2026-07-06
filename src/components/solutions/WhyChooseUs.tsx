@@ -1,4 +1,10 @@
 import React from "react";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import CloseIcon from "@mui/icons-material/Close";
+import CheckIcon from "@mui/icons-material/Check";
 import Reveal from "@/components/ui/Reveal";
 
 const othersItems = [
@@ -20,45 +26,47 @@ const usItems = [
  */
 export default function WhyChooseUs() {
   return (
-    <section id="solutions">
-      <div className="wrap">
+    <Box component="section" id="solutions">
+      <Box className="wrap">
         <Reveal className="section-head">
-          <span className="eyebrow">Why ADOPTBYTE</span>
-          <h2>The difference shows up in how we work.</h2>
+          <Typography component="span" className="eyebrow">
+            Why ADOPTBYTE
+          </Typography>
+          <Typography component="h2">
+            The difference shows up in how we work.
+          </Typography>
         </Reveal>
 
         <Reveal className="compare-wrap">
-          {/* Typical agencies column */}
-          <div className="compare-col others">
-            <h4>Typical Agencies</h4>
-            <ul className="compare-list">
+          <Box className="compare-col others">
+            <Typography component="h4">
+              Typical Agencies
+            </Typography>
+            <List className="compare-list" disablePadding component="ul">
               {othersItems.map((item) => (
-                <li key={item}>
-                  <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" aria-hidden="true">
-                    <path d="M6 6l12 12M18 6L6 18" />
-                  </svg>
+                <ListItem key={item} disablePadding component="li">
+                  <CloseIcon fontSize="small" aria-hidden="true" />
                   {item}
-                </li>
+                </ListItem>
               ))}
-            </ul>
-          </div>
+            </List>
+          </Box>
 
-          {/* ADOPTBYTE column */}
-          <div className="compare-col us">
-            <h4>ADOPTBYTE</h4>
-            <ul className="compare-list">
+          <Box className="compare-col us">
+            <Typography component="h4">
+              ADOPTBYTE
+            </Typography>
+            <List className="compare-list" disablePadding component="ul">
               {usItems.map((item) => (
-                <li key={item}>
-                  <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" aria-hidden="true">
-                    <path d="M20 6L9 17l-5-5" />
-                  </svg>
+                <ListItem key={item} disablePadding component="li">
+                  <CheckIcon fontSize="small" aria-hidden="true" />
                   {item}
-                </li>
+                </ListItem>
               ))}
-            </ul>
-          </div>
+            </List>
+          </Box>
         </Reveal>
-      </div>
-    </section>
+      </Box>
+    </Box>
   );
 }

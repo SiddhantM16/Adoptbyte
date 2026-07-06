@@ -1,6 +1,8 @@
 "use client";
 
 import React from "react";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 import Reveal from "@/components/ui/Reveal";
 import Counter from "@/components/ui/Counter";
 import { trustStats } from "@/data/siteData";
@@ -11,20 +13,21 @@ import { trustStats } from "@/data/siteData";
  */
 export default function Trust() {
   return (
-    <section className="trust" aria-label="Company statistics">
-      <div className="wrap trust-grid">
+    <Box component="section" className="trust" aria-label="Company statistics">
+      <Box className="wrap trust-grid">
         {trustStats.map((stat, idx) => (
           <Reveal
             key={stat.label}
-            as="div"
             className="trust-item"
             delay={idx > 0 ? (Math.min(idx, 4) as 1 | 2 | 3 | 4) : undefined}
           >
             <Counter target={stat.target} suffix={stat.suffix} />
-            <div className="label">{stat.label}</div>
+            <Typography component="div" className="label">
+              {stat.label}
+            </Typography>
           </Reveal>
         ))}
-      </div>
-    </section>
+      </Box>
+    </Box>
   );
 }

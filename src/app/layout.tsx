@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter } from "next/font/google";
+import ThemeRegistry from "@/components/providers/ThemeRegistry";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -46,7 +47,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`}>
-      <body>{children}</body>
+      <body>
+        <ThemeRegistry>{children}</ThemeRegistry>
+      </body>
     </html>
   );
 }

@@ -1,3 +1,4 @@
+import Box from "@mui/material/Box";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/hero/Hero";
@@ -20,7 +21,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main>
+      <Box component="main">
         <Hero />
         {/* <Trust /> */}
         {/* <About /> */}
@@ -31,7 +32,7 @@ export default function Home() {
         <TechStack />
         {/* <Testimonials /> */}
         <Contact />
-      </main>
+      </Box>
       <Footer />
     </>
   );

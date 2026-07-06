@@ -1,4 +1,6 @@
 import React from "react";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 import Reveal from "@/components/ui/Reveal";
 
 /**
@@ -7,9 +9,8 @@ import Reveal from "@/components/ui/Reveal";
  */
 export default function About() {
   return (
-    <section id="about">
-      <div className="wrap about-grid">
-        {/* Left – SVG illustration */}
+    <Box component="section" id="about">
+      <Box className="wrap about-grid">
         <Reveal className="about-illustration">
           <svg viewBox="0 0 500 520" width="100%" height="100%" aria-hidden="true">
             <defs>
@@ -59,18 +60,25 @@ export default function About() {
           </svg>
         </Reveal>
 
-        {/* Right – copy, timeline, values */}
-        <div>
+        <Box>
           <Reveal>
-            <span className="eyebrow">Our Story</span>
-            <h2 style={{ marginTop: "20px", fontSize: "clamp(28px,3vw,40px)", lineHeight: 1.15 }}>
+            <Typography component="span" className="eyebrow">
+              Our Story
+            </Typography>
+            <Typography
+              component="h2"
+              sx={{ marginTop: "20px", fontSize: "clamp(28px,3vw,40px)", lineHeight: 1.15 }}
+            >
               Nearly a decade of building software that outlives trends.
-            </h2>
-            <p style={{ color: "var(--ink-soft)", marginTop: "16px", fontSize: "15.5px", maxWidth: "520px" }}>
+            </Typography>
+            <Typography
+              component="p"
+              sx={{ color: "var(--ink-soft)", marginTop: "16px", fontSize: "15.5px", maxWidth: "520px" }}
+            >
               ADOPTBYTE started as a two-person engineering studio and grew into
               a full-service partner for founders and enterprise teams who need
               software that performs under real-world pressure — not just demo day.
-            </p>
+            </Typography>
           </Reveal>
 
           <Reveal delay={1} className="timeline">
@@ -80,11 +88,13 @@ export default function About() {
               { yr: "2023", title: "AI practice launched", desc: "Began embedding ML and automation into client products." },
               { yr: "2026", title: "180+ products shipped", desc: "Trusted by teams across 14 countries and counting." },
             ].map(({ yr, title, desc }) => (
-              <div key={yr} className="timeline-item">
-                <div className="yr">{yr}</div>
-                <h4>{title}</h4>
-                <p>{desc}</p>
-              </div>
+              <Box key={yr} className="timeline-item">
+                <Box className="yr">{yr}</Box>
+                <Typography component="h4">
+                  {title}
+                </Typography>
+                <Typography component="p">{desc}</Typography>
+              </Box>
             ))}
           </Reveal>
 
@@ -94,14 +104,16 @@ export default function About() {
               { title: "Vision", desc: "Set the standard for enterprise-grade engineering." },
               { title: "Values", desc: "Craft, transparency, and long-term partnership." },
             ].map(({ title, desc }) => (
-              <div key={title} className="value-card">
-                <h5>{title}</h5>
-                <p>{desc}</p>
-              </div>
+              <Box key={title} className="value-card">
+                <Typography component="h5">
+                  {title}
+                </Typography>
+                <Typography component="p">{desc}</Typography>
+              </Box>
             ))}
           </Reveal>
-        </div>
-      </div>
-    </section>
+        </Box>
+      </Box>
+    </Box>
   );
 }

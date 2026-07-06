@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 import Reveal from "@/components/ui/Reveal";
 import { processSteps } from "@/data/siteData";
 
@@ -26,15 +28,22 @@ function ProcessStep({ step, delay }: StepProps) {
 
   return (
     <Reveal
-      as="div"
       className={`process-step${isActive ? " active" : ""}`}
-      style={{ transitionDelay: `${delay}s` }}
+      delay={delay}
     >
-      <div className="process-num" ref={numRef}>
+      <Box
+        className="process-num"
+        ref={numRef}
+        sx={{ transitionDelay: `${delay * 0.08}s` }}
+      >
         {step.n}
-      </div>
-      <h5>{step.t}</h5>
-      <p>{step.d}</p>
+      </Box>
+      <Box className="process-step-text">
+        <Typography component="h5">
+          {step.t}
+        </Typography>
+        <Typography component="p">{step.d}</Typography>
+      </Box>
     </Reveal>
   );
 }
@@ -45,19 +54,23 @@ function ProcessStep({ step, delay }: StepProps) {
  */
 export default function Process() {
   return (
-    <section>
-      <div className="wrap">
+    <Box component="section">
+      <Box className="wrap">
         <Reveal className="section-head">
-          <span className="eyebrow">How We Work</span>
-          <h2>A process built for clarity at every stage.</h2>
+          <Typography component="span" className="eyebrow">
+            How We Work
+          </Typography>
+          <Typography component="h2">
+            A process built for clarity at every stage.
+          </Typography>
         </Reveal>
 
-        <div className="process-track">
+        <Box className="process-track">
           {processSteps.map((s, idx) => (
-            <ProcessStep key={s.n} step={s} delay={idx * 0.06} />
+            <ProcessStep key={s.n} step={s} delay={idx + 1} />
           ))}
-        </div>
-      </div>
-    </section>
+        </Box>
+      </Box>
+    </Box>
   );
 }
